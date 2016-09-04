@@ -1,0 +1,102 @@
+
+ footer, div.page {
+    width: 760px;
+    margin: 0 auto;
+    background: #daeef3;
+    padding: 20px 30px;
+}
+
+// header{
+//    h1 {
+//         color: #169bbd;
+//         margin: 0;
+//         font-weight: normal;
+//         font-size: 42px;
+//     }
+//     nav ul {
+//         list-style: none;
+//         margin: 0;
+//         padding: 0;
+//         li {
+//             display: inline;
+//             margin: 0 8px 0 0;
+//             padding: 0;
+//         }
+//     }
+// }
+.site-header {
+    top: 0;
+    position: fixed;
+    height: 72px;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    transition: all .3s ease .1s;
+}
+.for-navi {
+    position: relative;
+    overflow: visible;
+    @media only screen and (max-width: 992px){
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .site-logo {
+        float: left;
+        h1 a {
+            color: #fff;
+        }
+        img{
+            width: 60px;
+        }
+        .logo-text{
+            display: inline-block;
+            line-height: 36px;
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+    }
+    .main-navigation>ul {
+        margin: 0;
+        list-style-type: none;
+        float: right;
+        &>li{
+            letter-spacing: 2px;
+            font-size: 12px;
+            font-weight: 400;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            &>a{
+                color: #222!important;
+                display: block;
+                // color: #fff;
+                padding: 0 12px;
+                line-height: 72px;
+            }
+        }
+    }
+    .main-navigation {
+        @media only screen and (max-width: 992px){    
+            display: none;
+            width: 100%;
+            position: absolute;
+            height: auto;
+            left: 0;
+            top: 72px;
+            background: #fff;
+            z-index: 99;
+            overflow: auto;
+        }
+    }
+    #menu-toggle {
+        float: right;
+        font-size: 20px;
+        margin-top: 25px;
+        color: #fff;
+    }
+
+}

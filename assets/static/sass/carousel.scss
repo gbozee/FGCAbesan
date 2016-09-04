@@ -1,0 +1,40 @@
+@import "flexslider";
+canvas{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+}
+.hero-slider.flexslider {
+    position: relative;
+    z-index: 1;
+    height: 500px;
+    width: 100%;
+    overflow: hidden;
+    &>ul.slides{
+        height: 100%;
+    }
+     ul.slides li {
+        height: 500px;
+        width: 100%;
+        overflow: hidden;
+        position: static;
+        background-attachment: scroll!important;
+    }
+}
+#canvas-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.flex-caption {
+    color: #fff;
+    font-weight: 400;
+    padding: 30px;
+    width: 500px;
+    position: relative;
+    left: 50%;
+    top: 32%;
+    display: none;
+}
