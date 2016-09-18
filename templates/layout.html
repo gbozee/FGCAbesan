@@ -22,13 +22,49 @@
 <!--[if lt IE 7]>
 	<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
 <![endif]-->
-<div class="body"> 
+<div class="body">
+	{% block heading %}
+	<header class="site-header {% block header_sticky %}black-background{% endblock header_sticky %}">
+    <div class="container for-navi">
+        <div class="site-logo">
+            <h1>
+                <a href="{{"/"}}">
+                    <span class="logo-icon">
+                        <img src="{{ '/static/images/logo.png'|url }}" alt=""></span>
+                    <span class="logo-text">Abesan <span>Church</span></span>
+                    <span class="logo-tagline"></span>
+                </a>
+            </h1>
+        </div>
+        <!-- Main Navigation -->
+        <nav class="main-navigation" role="navigation">
+            <ul class="sf-menu sf-js-enabled">
+                <li><a href="{{"/"}}" class="sf-with-ul">Home</a>
+
+                </li>
+                <li class=""><a href="{{'/about'|url}}" class="sf-with-ul">About us</a>
+                </li>
+                <li class=""><a href="{{'/sermons'|url}}" class="sf-with-ul">Sermons</a>
+                </li>
+                <li><a href="{{'/events'|url}}" class="sf-with-ul">Events</a>
+                </li>
+                <li class="">
+                    <a href="{{'/blog'|url}}" class="sf-with-ul">Blog</a>
+                </li>
+                <li><a href="{{'/contact'|url}}">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="#" class="visible-sm visible-xs" id="menu-toggle"><i class="fa fa-bars"></i></a>
+    </div>
+</header>
+
+	{% endblock %}
 	<!-- Start Site Header -->
-	{% include "header.html" %}
-  
+
 	<!-- End Site Header -->
     <!-- Start Hero Slider -->
-    <div class="hero-slider heroflex flexslider clearfix" data-autoplay="yes" data-pagination="no" data-arrows="yes" data-style="fade" data-speed="7000" data-pause="yes">
+		{% block carousel %}
+		<div class="hero-slider heroflex flexslider clearfix" data-autoplay="yes" data-pagination="no" data-arrows="yes" data-style="fade" data-speed="7000" data-pause="yes">
       	<ul class="slides">
         	<li class="parallax" style="background-image:url({{'/static/images/slide3.jpg'}});">
             	<div class="flex-caption" data-appear-animation="fadeInRight" data-appear-animation-delay="500">
@@ -45,9 +81,11 @@
       	</ul>
         <canvas id="canvas-animation"></canvas>
     </div>
+		{% endblock %}
     <!-- End Hero Slider -->
     <!-- Lead Content -->
-    <div class="lead-content clearfix">
+    {% block body %}
+		<div class="lead-content clearfix">
     	<div class="lead-content-wrapper">
     		<div class="container">
             	<div class="row">
@@ -76,7 +114,8 @@
         	</div>
         </div>
     </div>
-    {% block body %}{% endblock body %}
+
+		{% endblock body %}
     <!-- Start site footer -->
     <footer class="site-footer">
        	<div class="container">
@@ -152,7 +191,7 @@
         </div>
     </footer>
     <!-- End site footer -->
-  	<a id="back-to-top"><i class="fa fa-angle-double-up"></i></a>  
+  	<a id="back-to-top"><i class="fa fa-angle-double-up"></i></a>
 </div>
 <!-- Event Directions Popup -->
 <div class="quick-info-overlay">

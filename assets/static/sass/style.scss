@@ -1,5 +1,5 @@
 // @import "bootstrap/bootstrap";
-// @import "font-awesome/font-awesome";
+@import "font-awesome/font-awesome";
 // @import "header";
 // @import "page";
 // @import "carousel";
@@ -9,7 +9,6 @@
 @import "prettyPhoto";
 @import "mediaelementplayer";
 @import "custom";
-
 
 @import url(font-awesome.css);@import url(line-icons.css);@import url(animations.css);@import url(http://fonts.googleapis.com/css?family=Roboto:400,700,300);@import url(http://fonts.googleapis.com/css?family=Volkhov:400,400italic);@import url(http://fonts.googleapis.com/css?family=Clicker+Script);html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
     margin: 0;
@@ -1459,18 +1458,11 @@ body.boxed .body {
     width: 100%;
     margin: 0 auto;
     border-bottom: 1px solid rgba(0,0,0,.1);
-    -webkit-transition: all .3s ease .2s;
-    -moz-transition: all .3s ease .2s;
-    -ms-transition: all .3s ease .2s;
-    -o-transition: all .3s ease .2s;
-    transition: all .3s ease .1s
+    transition: all .3s ease .1s;
+    
 }
 
 .touch .site-header {
-    -webkit-transition: none;
-    -moz-transition: none;
-    -ms-transition: none;
-    -o-transition: none;
     transition: none
 }
 
@@ -1480,7 +1472,7 @@ body.boxed .body {
 
 .site-header.sticky-header {
     border-bottom: 0;
-    position: fixed;
+    // position: fixed;
     top: 0;
     left: 0;
     height: 72px;
@@ -1489,7 +1481,9 @@ body.boxed .body {
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
     box-shadow: 0 1px 1px rgba(0,0,0,.1)
 }
-
+.black-background{
+    background: black !important;
+}
 .header-style2 .site-header.sticky-header,.header-style4 .site-header.sticky-header {
     position: fixed
 }
