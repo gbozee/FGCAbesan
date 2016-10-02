@@ -11717,3 +11717,12 @@ ul.blog-classic-listing strong.post-title {
 @media only screen and (min-width: 480px) and (max-width: 767px) {
   .gallery-updates.cols5 > ul > li, .gallery-updates.cols4 > ul > li, .gallery-updates.cols3 > ul > li, .gallery-updates.cols2 > ul > li {
     width: 50%; } }
+
+.main-navigation > ul > li ul {
+  top: 55px;
+  left: 0px; }
+
+.fluid-width-video-wrapper {
+  width: 100%;
+  position: relative;
+  padding: 0; }

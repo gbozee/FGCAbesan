@@ -1,0 +1,179 @@
+{% extends "layout.html" %}
+{% block body %}
+{% set beliefs = site.query('/belief').all() %}
+{% set events = site.query('/events').all() %}
+{% set featured_blog = site.query('/blog').filter(F.featured==True).first() %}
+{% set blogs = site.query('/blog').filter(F.featured ==False).all()[:3] %}
+
+<div class="lead-content clearfix">
+  <div class="lead-content-wrapper">
+    <div class="container">
+          <div class="row">
+              {% for b in beliefs %}
+                <div class="col-md-4 col-sm-4 featured-block">
+                    <h3>{{b.title}}</h3>
+                    <figure>
+                      <a href="about.html"><img src="{{b.img}}" alt="{{b.title}}"></a>
+                  </figure>
+                  <p>{{b.body}}</p>
+                </div>
+              {% endfor %}
+            </div>
+      </div>
+    </div>
+</div>
+<!-- Start Body Content -->
+  <div class="main" role="main">
+    <div id="content" class="content full">
+        <div class="container">
+            <div class="row">
+                  <div class="col-md-4 col-sm-5">
+                      <section class="upcoming-event format-standard event-list-item event-dynamic">
+                          <a href="single-event.html" class="media-box">
+                              <img src="{{'/static/images/upcoming_event.jpg'}}" alt="">
+                          </a>
+                          <div class="upcoming-event-content">
+                              <span class="label label-primary upcoming-event-label">Next coming event</span>
+                              <div id="counter" class="counter clearfix" data-date="July 13, 2015">
+                                  <div class="timer-col"> <span id="days"></span> <span class="timer-type">Days</span> </div>
+                                  <div class="timer-col"> <span id="hours"></span> <span class="timer-type">Hours</span> </div>
+                                  <div class="timer-col"> <span id="minutes"></span> <span class="timer-type">Minutes</span> </div>
+                                  <div class="timer-col"> <span id="seconds"></span> <span class="timer-type">Seconds</span> </div>
+                              </div>
+                              <h3><a href="single-event.html" class="event-title">Youth participation</a></h3>
+                              <span class="meta-data">On <span class="event-date">13 Jul, 15</span> at <span class="event-time">08:00 AM</span> at</span>
+                              <span class="meta-data event-location"> <span class="event-location-address">State Route, Madison US</span></span>
+                          </div>
+                          <div class="upcoming-event-footer">
+                            <a href="#" class="pull-right btn btn-primary btn-sm event-tickets event-register-button">Register</a>
+                              <ul class="action-buttons">
+                                  <li title="Share event"><a href="#" data-trigger="focus" data-placement="top" data-content="" data-toggle="popover" data-original-title="Share Event" class="event-share-link"><i class="icon-share"></i></a></li>
+                                  <li title="Get directions" class="hidden-xs"><a href="#" class="cover-overlay-trigger event-direction-link"><i class="icon-compass"></i></a></li>
+                                  <li title="Contact event manager"><a href="#" data-toggle="modal" data-target="#Econtact" class="event-contact-link"><i class="icon-mail"></i></a></li>
+                              </ul>
+                          </div>
+                      </section>
+                  </div>
+                  <div class="col-md-8 col-sm-7">
+                      <div class="element-block events-listing">
+                          <div class="events-listing-header">
+                              <a href="events.html" class="pull-right basic-link">All Events</a>
+                              <h3 class="element-title">Upcoming Events</h3>
+                              <hr class="sm">
+                          </div>
+                          <div class="events-listing-content">
+                            {% for event in events %}
+                            <div class="event-list-item event-dynamic">
+                              <div class="event-list-item-date">
+                                  <span class="event-date">
+                                      <span class="event-day">{{event.date.strftime('%d')}}</span>
+                                      <span class="event-month">{{event.date.strftime('%b, %y')}}</span>
+                                    </span>
+                                </div>
+                                <div class="event-list-item-info">
+                                  <div class="lined-info">
+                                      <h4><a href="single-event.html" class="event-title">{{event.title}}</a></h4>
+                                    </div>
+                                  <div class="lined-info">
+                                      <span class="meta-data"><i class="fa fa-clock-o"></i> {{event.date.strftime('%A')}},
+                                        <span class="event-time">{{event.date.strftime("%I:%M %p")}}</span></span>
+                                    </div>
+                                  <div class="lined-info event-location">
+                                      <span class="meta-data"><i class="fa fa-map-marker"></i> <span class="event-location-address">{{event.venue}}</span></span>
+                                    </div>
+                                </div>
+                                <div class="event-list-item-actions">
+                                  <a href="#" class="hidden btn btn-default btn-transparent event-tickets event-register-button">Register</a>
+                                  <ul class="action-buttons">
+                                      <li title="Share event"><a href="#" data-trigger="focus" data-placement="top" data-content="" data-toggle="popover" data-original-title="Share Event" class="event-share-link"><i class="icon-share"></i></a></li>
+                                      <li title="Get directions" class="hidden-xs"><a href="#" class="cover-overlay-trigger event-direction-link"><i class="icon-compass"></i></a></li>
+                                      <li title="Contact event manager"><a href="#" data-toggle="modal" data-target="#Econtact" class="event-contact-link"><i class="icon-mail"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            {% endfor %}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <hr class="fw">
+              <div class="row">
+                  <div class="col-md-8">
+                      <h3>From our blog</h3>
+                      <hr class="sm">
+                      <div class="row">
+                        <div class="col-md-6">
+                            <div class="very-latest-post format-standard">
+                                <div class="title-row">
+                                  <a href="blog-post.html#comments" class="comments-go" title="10 comments"><i class="icon-dialogue-text"></i></a>
+                                  <h4>Very latest</h4>
+                                  </div>
+                                  <a href="blog-post.html" class="media-box post-thumb">
+                                      <img src="{{featured_blog.img}}" alt="">
+                                  </a>
+                                  <h3 class="post-title"><a href="blog-post.html">{{featured_blog.title}}</a></h3>
+                                  <div class="meta-data">by <a href="#">{{featured_blog.author}}</a> on {{featured_blog.pub_date.strftime("%d %B, %Y")}} in
+                                    <a href="#">{{featured_blog.tags}}</a></div>
+                                  <p>{{featured_blog.body.html|truncate(90)}}</p>
+                                  <p><a href="{{featured_blog|url}}" class="basic-link">Continue reading</a></p>
+                              </div>
+                          </div>
+                          <div class="col-md-6">
+                              <ul class="blog-classic-listing">
+                                {% for blog in blogs %}
+                                  <li>
+                                      <a href="{{blog|url}}">
+                                        <strong class="post-title">{{blog.title}}</strong></a>
+                                      <div class="meta-data">by <a href="#">{{blog.author}}</a> on {{blog.pub_date.strftime("%d %B, %Y")}} in
+                                        <a href="#">{{blog.tags}}</a></div>
+                                      <p>{{blog.body.html|truncate(90)}}</p>
+                                    <p><a href="{{blog|url}}" class="basic-link">Continue reading</a></p>
+                                </li>
+                                {% endfor %}
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="widget latest_sermons_widget">
+                        <ul>
+                            <li class="most-recent-sermon clearfix">
+                                  <h3>Recent Sermons</h3>
+                                  <hr class="sm">
+                                    <div class="fluid-width-video-wrapper hidden">
+                                      <div class="latest-sermon-video fw-video">
+                                          <iframe src="https://player.vimeo.com/video/37540860?title=0&amp;byline=0&amp;portrait=0" width="500" height="281"></iframe>
+                                      </div>
+                                      <div class="latest-sermon-content">
+                                          <h4><a href="single-sermon.html">Rushing wind</a></h4>
+                                          <div class="meta-data">by <a href="#">Chris Hodges</a></div>
+                                          <p>Nulla consequat massa quis enim, aliquet nec nulla consequat massa quis enim, vulputate eget...</p>
+                                      </div>
+                                      <div class="sermon-links">
+                                          <ul class="action-buttons">
+                                              <li><a href="single-sermon.html" data-toggle="tooltip" data-placement="right" data-original-title="Watch Video"><i class="icon-video-cam"></i></a></li>
+                                              <li><a href="single-sermon.html" data-toggle="tooltip" data-placement="right" data-original-title="Listen Audio"><i class="icon-headphones"></i></a></li>
+                                              <li><a href="single-sermon.html" data-toggle="tooltip" data-placement="right" data-original-title="Download Audio"><i class="icon-cloud-download"></i></a></li>
+                                              <li><a href="single-sermon.html" data-toggle="tooltip" data-placement="right" data-original-title="Download PDF"><i class="icon-download-folder"></i></a></li>
+                                          </ul>
+                                      </div>
+
+                                    </div>
+                              </li>
+                              <li>
+                                <a href="single-sermon.html"><strong class="post-title">Worship God’s Way</strong></a>
+                                      <div class="meta-data">by <a href="#">Dino Rizzo</a></div>
+                              </li>
+                              <li>
+                                <a href="single-sermon.html"><strong class="post-title">What God Really Wants</strong></a>
+                                      <div class="meta-data">by <a href="#">Chris Hodges</a></div>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- End Body Content -->
+{% endblock %}

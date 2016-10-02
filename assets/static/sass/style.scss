@@ -1459,7 +1459,7 @@ body.boxed .body {
     margin: 0 auto;
     border-bottom: 1px solid rgba(0,0,0,.1);
     transition: all .3s ease .1s;
-    
+
 }
 
 .touch .site-header {
@@ -4458,4 +4458,14 @@ ul.blog-classic-listing strong.post-title {
     .gallery-updates.cols5>ul>li,.gallery-updates.cols4>ul>li,.gallery-updates.cols3>ul>li,.gallery-updates.cols2>ul>li {
         width:50%
     }
+}
+
+.main-navigation > ul > li ul {
+    top: 55px;
+    left: 0px;
+}
+.fluid-width-video-wrapper {
+    width: 100%;
+    position: relative;
+    padding: 0;
 }
