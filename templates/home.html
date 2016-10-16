@@ -1,24 +1,16 @@
 {% extends "layout.html" %}
+{% import "macros/home.html" as home_func %}
 {% block body %}
 {% set beliefs = site.query('/belief').all() %}
 {% set events = site.query('/events').all() %}
+{% set sermons = site.query('/sermons').all()[:3] %}
 {% set featured_blog = site.query('/blog').filter(F.featured==True).first() %}
 {% set blogs = site.query('/blog').filter(F.featured ==False).all()[:3] %}
 
 <div class="lead-content clearfix">
   <div class="lead-content-wrapper">
     <div class="container">
-          <div class="row">
-              {% for b in beliefs %}
-                <div class="col-md-4 col-sm-4 featured-block">
-                    <h3>{{b.title}}</h3>
-                    <figure>
-                      <a href="about.html"><img src="{{b.img}}" alt="{{b.title}}"></a>
-                  </figure>
-                  <p>{{b.body}}</p>
-                </div>
-              {% endfor %}
-            </div>
+      {{home_func.render_beliefs(beliefs)}}
       </div>
     </div>
 </div>
@@ -61,38 +53,7 @@
                               <h3 class="element-title">Upcoming Events</h3>
                               <hr class="sm">
                           </div>
-                          <div class="events-listing-content">
-                            {% for event in events %}
-                            <div class="event-list-item event-dynamic">
-                              <div class="event-list-item-date">
-                                  <span class="event-date">
-                                      <span class="event-day">{{event.date.strftime('%d')}}</span>
-                                      <span class="event-month">{{event.date.strftime('%b, %y')}}</span>
-                                    </span>
-                                </div>
-                                <div class="event-list-item-info">
-                                  <div class="lined-info">
-                                      <h4><a href="single-event.html" class="event-title">{{event.title}}</a></h4>
-                                    </div>
-                                  <div class="lined-info">
-                                      <span class="meta-data"><i class="fa fa-clock-o"></i> {{event.date.strftime('%A')}},
-                                        <span class="event-time">{{event.date.strftime("%I:%M %p")}}</span></span>
-                                    </div>
-                                  <div class="lined-info event-location">
-                                      <span class="meta-data"><i class="fa fa-map-marker"></i> <span class="event-location-address">{{event.venue}}</span></span>
-                                    </div>
-                                </div>
-                                <div class="event-list-item-actions">
-                                  <a href="#" class="hidden btn btn-default btn-transparent event-tickets event-register-button">Register</a>
-                                  <ul class="action-buttons">
-                                      <li title="Share event"><a href="#" data-trigger="focus" data-placement="top" data-content="" data-toggle="popover" data-original-title="Share Event" class="event-share-link"><i class="icon-share"></i></a></li>
-                                      <li title="Get directions" class="hidden-xs"><a href="#" class="cover-overlay-trigger event-direction-link"><i class="icon-compass"></i></a></li>
-                                      <li title="Contact event manager"><a href="#" data-toggle="modal" data-target="#Econtact" class="event-contact-link"><i class="icon-mail"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            {% endfor %}
-                          </div>
+                          {{home_func.render_events(events)}}
                       </div>
                   </div>
               </div>
@@ -160,15 +121,13 @@
 
                                     </div>
                               </li>
-                              <li>
-                                <a href="single-sermon.html"><strong class="post-title">Worship God’s Way</strong></a>
-                                      <div class="meta-data">by <a href="#">Dino Rizzo</a></div>
-                              </li>
-                              <li>
-                                <a href="single-sermon.html"><strong class="post-title">What God Really Wants</strong></a>
-                                      <div class="meta-data">by <a href="#">Chris Hodges</a></div>
-                              </li>
-                          </ul>
+                              {% for sermon in sermons %}
+                                <li>
+                                  <a href="{{sermon|url}}"><strong class="post-title">{{sermon.title}}</strong></a>
+                                        <div class="meta-data">by <a href="#">{{sermon.pastor}}</a></div>
+                                </li>
+                              {% endfor %}
+                            </ul>
                       </div>
                   </div>
               </div>

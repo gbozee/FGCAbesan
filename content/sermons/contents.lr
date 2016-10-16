@@ -1,1 +1,3 @@
 _template: sermon.html
+---
+_model: sermon
