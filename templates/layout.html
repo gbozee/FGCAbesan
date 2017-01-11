@@ -123,27 +123,23 @@
         		<!-- Quick Info -->
         		<div class="quick-info">
                     <div class="row">
-                        <div class="col-md-3 col-sm-6">
-                            <h4><i class="fa fa-clock-o"></i> Service Times</h4>
-                            <p>Sundays @ 10:00 am<br>Starting October 1</p>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <h4><i class="fa fa-map-marker"></i> Our Location</h4>
-                            <p>777, Path to God<br>United States of America</p>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <h4><i class="fa fa-envelope"></i> Contact Info</h4>
-                            <p>11 - 00 - 653240<br>email@adorechurch.com</p>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <h4><i class="fa fa-clock-o"></i> Socialize with us</h4>
-                            <ul class="social-icons-colored inversed">
-                                <li class="facebook"><a href="http://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                                <li class="vimeo"><a href="http://www.vimeo.com/"><i class="fa fa-vimeo-square"></i></a></li>
-                                <li class="twitter"><a href="http://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-                                <li class="googleplus"><a href="http://plus.google.com/"><i class="fa fa-google-plus"></i></a></li>
-                            </ul>
-                        </div>
+											{% for info in [{'icon':"fa-clock-o",'name':"Service Times", "detail":"Sundays @ 10:00 am<br>Starting October 1"},
+											{'icon':"fa-map-marker",'name': "Our Location","detail":"777, Path to God<br>United States of America"},
+											{'icon': "fa-envelope",'name':"Contact Info",'detail':"11 - 00 - 653240<br>email@adorechurch.com"}] %}
+												<div class="col-md-3 col-sm-6">
+														<h4><i class="fa {{info.icon}}"></i> {{info.name}}</h4>
+														<p>{{info.detail|safe}}</p>
+												</div>
+											{% endfor %}
+                      <div class="col-md-3 col-sm-6">
+                          <h4><i class="fa fa-clock-o"></i> Socialize with us</h4>
+                          <ul class="social-icons-colored inversed">
+                              <li class="facebook"><a href="http://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                              <li class="vimeo"><a href="http://www.vimeo.com/"><i class="fa fa-vimeo-square"></i></a></li>
+                              <li class="twitter"><a href="http://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                              <li class="googleplus"><a href="http://plus.google.com/"><i class="fa fa-google-plus"></i></a></li>
+                          </ul>
+                      </div>
                     </div>
             	</div>
         		<div class="site-footer-bottom">

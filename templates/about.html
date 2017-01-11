@@ -32,33 +32,19 @@
 							<p>Nulla consequat massa quis enim.Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.Aenean vulputate eleifend tellus. Nulla consequat massa quis enim.Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.Aenean vulputate eleifend tellus.</p>
 							<div class="spacer-50"></div>
 							<div class="row">
+								{% for item in [{'icon':"icon-happy-drop",'heading':"Be happy",'body':"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel."},
+								{'icon':"icon-umbrella",'heading': "Help others", 'body':"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel."},
+								{'icon':"icon-tshirt",'heading': "Shop for a cause", 'body': "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel."}] %}
 								<div class="col-md-4 col-sm-4">
 										<div class="icon-box icon-box-style1">
 												<div class="icon-box-head">
-														<span class="ico"><i class="icon-happy-drop"></i></span>
-														<h4>Be happy</h4>
-													</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel.</p>
+														<span class="ico"><i class="{{item.icon}}"></i></span>
+														<h4>{{item.heading}}</h4>
+												</div>
+												<p>{{item.body}}</p>
 											</div>
 									</div>
-								<div class="col-md-4 col-sm-4">
-										<div class="icon-box icon-box-style1">
-												<div class="icon-box-head">
-														<span class="ico"><i class="icon-umbrella"></i></span>
-														<h4>Help others</h4>
-													</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel.</p>
-											</div>
-									</div>
-								<div class="col-md-4 col-sm-4">
-										<div class="icon-box icon-box-style1">
-												<div class="icon-box-head">
-														<span class="ico"><i class="icon-tshirt"></i></span>
-														<h4>Shop for a cause</h4>
-													</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel.</p>
-											</div>
-									</div>
+								{% endfor %}								
 							</div>
 							<hr class="fw">
 							<h3>Our Staff</h3>

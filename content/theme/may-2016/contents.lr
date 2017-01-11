@@ -1,0 +1,5 @@
+_template: sermon/sermon.html
+---
+_model: sermon
+---
+name: May 2016
